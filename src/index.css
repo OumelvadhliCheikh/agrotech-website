@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #16a34a;
+}
+
+body {
+  background-color: #f9fafb;
+  /* bg-gray-50 */
+  color: #ffffff;
+  /* text-gray-800 */
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-illustration {
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.08), rgba(6, 95, 70, 0.04));
+  border-radius: 12px;
+}
+
+.card-shadow {
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+}
+
+
+/* App.css */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ffffff;
+  color: #ffff;
+}
+
+.app {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.header {
+  background: linear-gradient(90deg, #0AB998, #009100);
+  color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.2rem;
+}
+
+.section {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 8px solid #FFBD1F;
+  border-radius: 8px;
+}
+
+.section h2 {
+  color: #0AB998;
+}
+
+.section h3 {
+  color: #009100;
+}
+
+.section ul {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #ffffff;
+  background-color: #009100;
+  border-radius: 10px;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}

@@ -13,23 +13,29 @@ export default function AgroTechLanding() {
   const [activeModule, setActiveModule] = useState(0);
   const form = useRef();
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     emailjs.sendForm(
-      'service_3pi2lsm', // remplace avec ton Service ID
-      'template_lk002xq', // remplace avec ton Template ID
+      'service_3pi2lsm',
+      'template_lk002xq',
       e.target,
-      '8a7exoWhjzdF6InIn' // remplace avec ta Public Key
+      '8a7exoWhjzdF6InIn'
     ).then(
       (result) => {
         console.log(result.text);
         setSubmitted(true);
-        e.target.reset(); // vide le formulaire
+        setError(false);
+        e.target.reset();
+
+        setTimeout(() => setSubmitted(false), 10000);
       },
       (error) => {
         console.log(error.text);
-        alert("Erreur lors de l'envoi. Veuillez réessayer.");
+        setError(true);
+        setSubmitted(false);
       }
     );
   };
@@ -97,9 +103,9 @@ export default function AgroTechLanding() {
 
           {/* Menu Desktop */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-gray-700 hover:text-[#0AB998] text-lg transition-colors">Fonctionnalités</a>
+            <a href="#Fonctionnalités" className="text-gray-700 hover:text-[#0AB998] text-lg transition-colors">Fonctionnalités</a>
             <a href="#modules" className="text-gray-700 hover:text-[#0AB998] text-lg transition-colors">Modules</a>
-            <a href="#benefits" className="text-gray-700 hover:text-[#0AB998] text-lg transition-colors">Avantages</a>
+            <a href="#contact" className="text-gray-700 hover:text-[#0AB998] text-lg transition-colors">Contact</a>
             <button className="px-6 py-3 bg-[#0AB998] text-white rounded-full text-lg hover:shadow-lg transition-transform">
               Contact
             </button>
@@ -142,9 +148,9 @@ export default function AgroTechLanding() {
           </button>
         </div>
       </section>
-      {/* FEATURES */}
-      {/* FEATURES */}
-      <section id="features" className="py-20 px-6 max-w-7xl mx-auto bg-gradient-to-b from-white from-60% via-green-50 via-80% to-white">        <div className="text-center mb-16">
+
+      {/* Fonctionnalités */}
+      <section id="Fonctionnalités" className="py-20 px-6 max-w-7xl mx-auto bg-gradient-to-b from-white from-60% via-green-50 via-80% to-white">        <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-[#0AB998] bg-clip-text text-transparent">
           Fonctionnalités
           <span className="block text-gray-900 mt-2">Complètes & Intégrées</span>
@@ -211,7 +217,7 @@ export default function AgroTechLanding() {
         </div>
       </section>
       {/* Comment Agrotech Fonctionne */}
-      <section className="py-20 bg-gradient-to-b from-white to-green-50">
+      <section id="modules" className="py-20 bg-gradient-to-b from-white to-green-50">
         <div className="max-w-7xl mx-auto px-6">
           {/* En-tête de section */}
           <div className="text-center mb-16">
@@ -454,6 +460,19 @@ export default function AgroTechLanding() {
                     * Champs obligatoires. Vos données sont sécurisées et confidentielles.
                   </p>
                 </form>
+                {submitted && (
+                  <p className="text-center text-green-600 font-semibold mt-6 animate-fade-in">
+                    ✅ Votre message a été envoyé avec succès ! Nous vous répondrons bientôt.
+                  </p>
+                )}
+
+                {/* Message d’erreur */}
+                {error && (
+                  <p className="text-center text-red-600 font-semibold mt-6 animate-fade-in">
+                    ⚠️ Une erreur est survenue. Veuillez réessayer.
+                  </p>
+                )}
+
               </div>
 
               {/* Informations de Contact en dessous du formulaire */}
@@ -464,7 +483,7 @@ export default function AgroTechLanding() {
                     <Phone className="w-8 h-8 text-white" />
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-2">Téléphone</h4>
-                  <p className="text-gray-600 text-lg mb-1">+222 45565555</p>
+                  <p className="text-gray-600 text-lg mb-1">+222 48647376 </p>
                   {/* <p className="text-gray-500 text-sm">Lun-Ven: 9h-18h</p> */}
                 </div>
 
@@ -491,7 +510,22 @@ export default function AgroTechLanding() {
             </div>
           </div>
         </div>
+
+
       </section>
+      {/* Message de succès */}
+      {submitted && (
+        <p className="text-center text-green-600 font-semibold mt-6 animate-fade-in">
+          Votre message a été envoyé avec succès ! Nous vous répondrons bientôt.
+        </p>
+      )}
+
+      {/* Message d’erreur */}
+      {error && (
+        <p className="text-center text-red-600 font-semibold mt-6 animate-fade-in">
+          Une erreur est survenue. Veuillez réessayer.
+        </p>
+      )}
 
 
 
@@ -510,7 +544,7 @@ export default function AgroTechLanding() {
               AgroTech Mauritanie
             </span>
           </div>
-          <p>© 2025 AgriTech Mauritanie. Tous droits réservés.</p>
+          <p>© 2025 AgroTech Mauritanie. Tous droits réservés.</p>
           <p className="mt-2 text-sm">Innovation agricole pour un avenir durable en Mauritanie</p>
         </div>
       </footer >
